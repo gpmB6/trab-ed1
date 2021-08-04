@@ -2,9 +2,6 @@
  *
  * Tiago Flores Lindner
  *
-    Usei os arquivos de exemplos como base para montar esse único arquivo de programa
-    Então a maior parte dos créditos vai pro senhor eu acho.
-    Desculpa por isso, é mais pq estava focado em fazer os trabalhos finais das cadeiras.
  */
 
 #include <stdio.h>
@@ -104,7 +101,7 @@ int imprime (lista *l, int pos) {
      }
      printf("\n\n");
 
-} //imprime (arrumar para só imprimir o indicado
+} //imprime (arrumar para sÃ³ imprimir o indicado
 
 void imprimeLista(lista *l){
 
