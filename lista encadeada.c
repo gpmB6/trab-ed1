@@ -19,6 +19,7 @@ typedef struct {
     contato c;
     struct no *proximo;
     struct no *ant;
+    int posicao;
 } no;
 
 typedef struct {
@@ -73,9 +74,11 @@ int insere(lista *l, contato *cont, int pos) {
         auxiliar->proximo = NULL;
         auxiliar->ant = l->fim;
         auxiliar->c = *cont;
+        auxiliar->posicao = pos;
         printf("%s", auxiliar->c.nome);
         printf("%s", auxiliar->c.email);
         printf("%s", auxiliar->c.fone);
+        printf("%d", auxiliar->posicao);
         if (vazia(l)) {
             l->inicio = auxiliar;
             printf("%s", l->inicio->c.nome);
@@ -94,14 +97,20 @@ int imprime (lista *l, int pos) {
         printf("Lista Vazia. \n");
         return 0;
      }
-     printf("Elementos da lista: ");
-     while(auxiliar!=NULL){
-        printf("%d ", auxiliar->c);
-        auxiliar = auxiliar->proximo;
+     printf("Elemento da lista: ");
+     if(auxiliar!=NULL){
+         if(auxiliar->posicao==pos)
+             printf("%d\n", auxiliar->c.nome);
+        else
+            auxiliar = auxiliar->proximo;
      }
      printf("\n\n");
+     
+     
+     
 
 } //imprime (arrumar para só imprimir o indicado
+
 
 void imprimeLista(lista *l){
 
@@ -109,6 +118,8 @@ void imprimeLista(lista *l){
         imprime(l, i);
 
     }//for
+    
+    	
 
 }//imprime toda a lista (usar o esquema do imprime da fila)
 
@@ -149,12 +160,15 @@ int tamanho(lista *l) {
                 printf("Digite o Nome: ");
                 fflush(stdin);
                 gets(leitura.nome);
+                getchar();
                 printf("Digite o email: ");
                 fflush(stdin);
                 gets(leitura.email);
+                getchar();
                 printf("Digite o fone : ");
                 fflush(stdin);
                 gets(leitura.fone);
+                getchar();
 
                 printf("\nInsira a posicao para inserir: ");
                 scanf("%d", &pos);
@@ -179,6 +193,7 @@ int tamanho(lista *l) {
             case 6:
                 break;
 
+
             default:
                 printf("\nOpcao invalida!");
                 break;
@@ -192,7 +207,6 @@ int tamanho(lista *l) {
 
  /*
   imprimeLista(&teste);
-
     for(i=0;i<2;i++){//inserir 2
         printf("Digite o Nome: ");
         gets(pessoa.nome);
@@ -203,13 +217,11 @@ int tamanho(lista *l) {
         push(&p, pessoa);
         puts("");//pular uma linha;
     }
-
     for(i=0; i<7; i++){
         insere(&teste, i);
         printf("Inserindo %d\n", i);
         imprimeLista(&teste);
     }
-
     while(tamanho(&teste)>1){
         remover(&teste, &a);
         remover(&teste, &b);
@@ -217,7 +229,6 @@ int tamanho(lista *l) {
         printf("Removi %d e %d, inserindo %d\n", a, b, r);
         insere(&teste, r);
         imprimeLista(&teste);
-
     }
     */
 
